@@ -5,6 +5,12 @@ from Bio import SeqIO
 from Bio.SeqUtils import GC
 
 dna_groups = []
+
+
+dsdsd
+
+
+
 for seqElement in SeqIO.parse("sequences.fasta", "fasta"):
     dna = seqElement.seq
     in_group = False

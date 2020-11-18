@@ -4,7 +4,7 @@ A common substring of a collection of strings is a substring of every member of 
 
 Note that the longest common substring is not necessarily unique; for a simple example, "AA" and "CC" are both longest common substrings of "AACC" and "CCAA".
 
-Given: A collection of k (k≤100) DNA strings of length at most 1 kbp each in FASTA format.
+Given`: A collection of k (k≤100) DNA strings of length at most 1 kbp each in FASTA format.
 
 Return: A longest common substring of the collection. (If multiple solutions exist, you may return any single solution.)
 
@@ -21,4 +21,19 @@ ATACA
 ## Sample Output
 ```
 AC
-```
+````
+
+
+
+>Rosalind_0498
+AAATAAA
+>Rosalind_2391
+AAATTTT
+>Rosalind_2323
+TTTTCCC
+>Rosalind_0442
+AAATCCC
+>Rosalind_5013
+GGGTGGG
+
+AAATAAATTTTCCCAAAT

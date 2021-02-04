@@ -5,8 +5,6 @@ from Bio.SeqUtils import GC
 app = Flask(__name__)
 ensembl_server = 'https://rest.ensembl.org'
 
-app.config["DEBUG"] = True
-
 #check for errors
 def check_status(r):
     if not r.ok:

@@ -1,5 +1,5 @@
 from flask import Flask, request
-import requests, sys, json, os
+import requests
 
 server = "https://rest.ensembl.org"
 
@@ -10,7 +10,6 @@ def get_ensembl_response(path, id, attr):
     r = requests.get(server + ext, headers = { "Content-Type": "application/json"})
     if not r.ok:
         r.raise_for_status()
-        sys.exit()
 
     return r.json()
 
@@ -18,16 +17,16 @@ def gc_content(seq):
     return round((seq.count('C') + seq.count('G')) / len(seq) * 100)
 
 def swap_a_t(seq):
-    new_seq = ""
+    new_seq = []
     for base in seq:
         if base == 'A':
-            new_seq += 'T'
+            new_seq.append('T')
         elif base == 'T':
-            new_seq += 'A'
+            new_seq.append('A')
         else:
-            new_seq += base
+            new_seq.append(base)
 
-    return new_seq
+    return ''.join(new_seq)
 
 def convert_to_fasta(decoded_seq):
     desc = ">" + decoded_seq["id"] + "." + str(decoded_seq["version"]) + " " + decoded_seq["desc"]
@@ -42,11 +41,7 @@ def convert_to_multifasta(decoded_seq):
     result = []
 
     for seq in decoded_seq["seq"]:
-        desc = ">" + seq["id"] + "." + str(seq["version"]) + " " + str(seq["desc"])
-        result += {
-            "id": desc,
-            "seq": seq["seq"]
-            }
+        result += convert_to_fasta(seq)
 
     return result
 
